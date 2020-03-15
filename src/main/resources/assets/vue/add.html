@@ -1,0 +1,57 @@
+﻿<html ng-app="App">
+<head>
+<meta charset="utf-8">
+<script src="axios.min.js"></script>
+<script src="vue.js"></script>
+</head>
+
+<body>
+	                  
+	<div id="app">
+	    jobDefinition Id: <input v-model="jobDefinitionId" ><BR>
+	    job Name: <input v-model="jobName" ><BR>
+	    testrail Name: <input v-model="testrailName" ><BR>
+	    code Repository: <input v-model="codeRepository" ><BR>
+	    mail Recipient List<input v-model="mailRecipientList" ><BR><BR>
+		<button v-on:click='addJob'>add</button>
+		
+		<h1>job list</h1>
+			<div v-for="job in jobs">job id:{{ job.jobDefinitionId }}, job name:{{ job.jobName }}
+		</div>
+	</div>
+	 
+	<script>
+    	 
+        new Vue({
+           el: '#app',
+           data: {
+        	   "jobDefinitionId":null,
+    			"jobName": null,
+    		    "testrailName": null,
+    			"codeRepository": null,
+    		    "mailRecipientList": null , 
+    		    jobs: null
+           },
+           
+           methods: {
+              'addJob': function () {
+                   axios.post('../../JobDefinition/add',
+            	         {
+            	    	  "jobDefinitionId":this.jobDefinitionId,
+        	    	      "jobName":this.jobName,
+        	    	      "testrailName":this.testrailName,
+        	    	      "codeRepository":this.codeRepository,
+        	    	      "mailRecipientList":this.mailRecipientList
+            	         }
+            	    )
+            	    .then(response => (this.jobs = response.data))
+            	    .catch(function (error) { 
+            	       	 console.log(error);
+            	     });
+            	   }
+    		 }
+       })
+   </script>
+</body>
+
+</html>

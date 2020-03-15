@@ -1,0 +1,39 @@
+﻿<html ng-app="App">
+<head>
+<meta charset="utf-8">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="axios.min.js"></script>
+  
+ <script>
+            new Vue({
+                el:'#app',
+                data:{
+                    user:{
+                    	 "jobDefinitionId":10,
+             		    "jobName": "market-api",
+             		    "testrailName": "market",
+             		    "codeRepository": "xxx",
+             		    "mailRecipientList": "qqq@qq.com"
+                    	},
+                    }
+                },
+                methods(){
+                    sendPost(){
+                        axios.post('../JobDefinition/add',this.user).then(resp=>{
+                            console.log(resp.data)
+                        }).catch(err=>{
+                            console.log('请求失败:'+err.status+','+err.statusText);
+                        });
+                    },
+                },
+            });
+    </script>
+            </head>
+                <body >
+                   <div id="app">
+                 <button @click='sendPost'>post方式发送Ajax请求</button>
+    </div>
+   
+                </body>
+
+            </html>

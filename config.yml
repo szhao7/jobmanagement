@@ -1,0 +1,16 @@
+server:
+  #applicationContextPath: /
+  #rootPath: /job
+  applicationConnectors:
+    - type: http
+      port: 8080
+
+  adminConnectors:
+    - type: http
+      port: 8081
+
+swagger:
+  resourcePackage: com.morningstar.autoManagementDemo.resources
+  schemes:
+    - http
+
