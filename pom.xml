@@ -14,7 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<dropwizard.version>1.3.12</dropwizard.version>
 		<apiBase.version>1.4.1.16</apiBase.version>
-		<postgres-jdbc.version>42.2.5</postgres-jdbc.version>
+		<postgres-jdbc.version>42.4.1</postgres-jdbc.version>
 	</properties>
 
 	<dependencies>
